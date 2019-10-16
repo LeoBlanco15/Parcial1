@@ -23,8 +23,8 @@ int main(void)
 	struct sCliente aClientes[1000];
 	struct sPedido aPedido[1000];
 	int menuOpcionElegida;
-	int i=0;
-	int iPedidos=0;
+	int i=1;
+	int iPedidos=1;
 	 do
 	 {
 		 	menuOpcionElegida= 0;
@@ -82,18 +82,18 @@ int main(void)
 	        		break;
 	        	case 5:
 
-	        		imprimirPedidos(aPedido,aClientes, i);
+	        		imprimirPedidos(aPedido,aClientes, iPedidos, i);
 	        		procesarResiduos(aPedido, iPedidos);
 
 	        		break;
 	        	case 6:
-	        		printf("Imprimir clientes");
+	        		imprimirClientes(aClientes, aPedido, i, iPedidos);
 	        		break;
 	        	case 7:
-	        		printf("Imprimir pedidos pendientes");
+	        		impimirPendientes(aPedido, aClientes, iPedidos, i);
 	        		break;
 	        	case 8:
-	        		printf("Imprimir pedidos prosesados");
+	        		impimirTerminados(aPedido, aClientes, iPedidos, i);
 	        		break;
 	        	case 0:
 	        		printf("No es una opcion valida\n");

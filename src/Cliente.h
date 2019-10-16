@@ -25,7 +25,6 @@ struct sCliente
 	char cuit[13];
 	char direccion[50];
 	char localidad[50];
-	int cantidadPedidos;
 };
 struct sPedido
 {
@@ -39,12 +38,15 @@ struct sPedido
 	int kilosP;
 };
 int imprimirArrayClientes(struct sCliente *aEmpleado, int cantidad);;
-int ingresarCliente(struct sCliente aEmpleados[], int i);
+int ingresarCliente(struct sCliente *aEmpleados, int i);
 
 int modificarCliente(struct sCliente aArray[], int mayor);
 int bajarCliente(struct sCliente aArray[], int mayor);
 int ingresarPedido(struct sPedido aPedido[],int i,int iClientes);
-int imprimirPedidos(struct sPedido *aPedido,struct sCliente *aCliente, int cantidad);
+int imprimirPedidos(struct sPedido *aPedido,struct sCliente *aCliente, int cantidad, int iCliente);
 int procesarResiduos(struct sPedido aPedido[], int iMayor);
+int imprimirClientes(struct sCliente *aCliente, struct sPedido *aPedido, int cantidad, int cantidadPedidos);
+int impimirPendientes(struct sPedido *aPedido, struct sCliente *aCliente, int cantidadPedidos, int cantidad);
+int impimirTerminados(struct sPedido *aPedido, struct sCliente *aCliente, int cantidadPedidos, int cantidad);
 
 #endif /* CLIENTE_H_ */

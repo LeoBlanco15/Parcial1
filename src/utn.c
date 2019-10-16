@@ -194,11 +194,11 @@ int getInt2 (char mensaje[], char error[], int *input, int minimo, int maximo, i
 {
 	int retorno = -1;
 	int aux;
-	printf("%s", mensaje);
-	scanf("%d", &aux);
-	__fpurge(stdin);
 	do
 	{
+		printf("%s", mensaje);
+		scanf("%d", &aux);
+		__fpurge(stdin);
 		if(aux> minimo && aux<= maximo )
 		{
 
@@ -223,7 +223,7 @@ int getCuit	(char*pResultado,
 					int reintentos)
 {
 int retorno = -1;
-char buffer[13];
+char buffer[133];
 if(	pResultado != NULL &&
 	pMensaje != NULL &&
 	pMensajeError != NULL &&
@@ -237,7 +237,7 @@ if(	pResultado != NULL &&
 			fgets(buffer,sizeof(buffer),stdin);
 			buffer[strlen(buffer)-1] = '\0';
 			__fpurge(stdin);
-			if(strlen(buffer)>=minimo && strlen(buffer) <= maximo)
+			if(strlen(buffer)>minimo && strlen(buffer) < maximo)
 			{
 
 
