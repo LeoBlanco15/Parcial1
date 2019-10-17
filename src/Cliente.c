@@ -143,23 +143,26 @@ int ingresarCliente(struct sCliente *aCliente, int i){
 					"ERROR", 1, 49, 2);
 
 		getString2(bCliente.direccion,"Ingrese la direccion",
-							"ERROR\n", 1, 49, 2);
+						"ERROR\n", 1, 49, 2);
 		getString2(bCliente.localidad,"Ingrese la localidad",
 									"ERROR\n", 1, 49, 2);
 		getCuit	(bCliente.cuit,"Ingrese el CUIT",
-							"ERROR\n",1,59,2);
+							"ERROR\n",1,13,2);
 		bCliente.idCliente = i; //pone id
 
-		bCliente.status = STATUS_PENDIENTE;
+		bCliente.status = STATUS_NOT_EMPTY;
 
-
+		printf("%s", bCliente.direccion);
 		aCliente[i] = bCliente;
+		//getString2(aCliente[i].direccion,"Ingrese la direccion",
+									//"ERROR\n", 1, 49, 2);
 
 	return 0;
 }
 int imprimirClientes(struct sCliente *aCliente, struct sPedido *aPedido, int cantidad, int cantidadPedidos)
 {
 	int i;
+	int pedidos=0;
 	int retorno = -1;
 	if(aCliente != NULL && cantidad>0)
 	{
@@ -176,16 +179,17 @@ int imprimirClientes(struct sCliente *aCliente, struct sPedido *aPedido, int can
 					printf("Los pedidos que hizo este ciente son: ");
 				}
 
-					for(int i2=0; i2< cantidadPedidos; i2++)
+				for(int i2=0; i2< cantidadPedidos; i2++)
+				{
+					if(aPedido[i2].idCliente == aCliente[i].idCliente)
 					{
-						if(aPedido[i2].idCliente == aCliente[i].idCliente)
+						if(aPedido[i2].status == 1)
 						{
-							if(aPedido[i2].status == 1)
-							{
-								printf("%d de %d, ", aPedido[i2].idPedido, aPedido[i2].kilos);
-							}
+								pedidos++;
 						}
 					}
+				}
+				printf("%d", pedidos);
 			}
 		}
 	}

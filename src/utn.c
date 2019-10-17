@@ -32,10 +32,12 @@ int getString2(	char *pResultado,
 				__fpurge(stdin);
 				fgets(buffer,sizeof(buffer),stdin);
 				buffer[strlen(buffer)-1] = '\0';
+
 				if(strlen(buffer)>=minimo && strlen(buffer) <= maximo)
 				{
 					strncpy(pResultado,buffer,maximo+1);
 					retorno = 0;
+
 				 	break;
 				}
 				printf("%s",pMensajeError);
@@ -170,17 +172,15 @@ int getStringNumeros(char mensaje[],char input[])
 int esNumerico(char str[])
 {
    int i=0;
-   int retorno= -1;
+   int retorno= 0;
    while(str[i] != '\0')
    {
-       if (i == 0 && str[i] == '-')
-       {
-           i++;
-           continue;
-
-       }
-       if(str[i] < '0' || str[i] > '9')
-           retorno= 0;
+    	   if(!((str[i] >= '0' && str[i] <= '9') || str[i]== '-'))
+    	   {
+    		   retorno= -1;
+           	   break;
+    	   }
+    	   //retorno = -1;
 
        i++;
    }
@@ -233,17 +233,18 @@ if(	pResultado != NULL &&
 	do
 		{
 			printf("%s",pMensaje);
-
+			__fpurge(stdin);
 			fgets(buffer,sizeof(buffer),stdin);
 			buffer[strlen(buffer)-1] = '\0';
-			__fpurge(stdin);
+
 			if(strlen(buffer)>minimo && strlen(buffer) < maximo)
 			{
 
 
 					if(esNumerico(buffer)==0)
 					{
-						strncpy(pResultado,buffer,maximo+1);
+
+						strncpy(pResultado,buffer,maximo);
 						retorno = 0;
 						break;
 					}

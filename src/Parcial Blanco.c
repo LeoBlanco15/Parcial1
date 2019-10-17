@@ -42,6 +42,7 @@ int main(void)
 	        	switch (menuOpcionElegida)
 	        	{
 	        	case 1:
+	        		//clearScreen();
 	        		ingresarCliente(aClientes, i); //dar de alta empleado
 	        		i++;
 	        		break;
